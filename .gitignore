@@ -1,0 +1,10 @@
+# Ignore everithing
+/*
+
+# Ignore unnecessary files
+.DS_Store
+
+# Track source files
+
+!/src/
+/src/*
