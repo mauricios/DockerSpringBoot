@@ -44,6 +44,13 @@ public class GreetingControllerTests {
     }
 
     @Test
+    public void noParamByeShouldReturnDefaultMessage() throws Exception {
+
+        this.mockMvc.perform(get("/bye")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").value("Bye, Mauricio!"));
+    }
+
+    @Test
     public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
         this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
