@@ -1,3 +1,14 @@
+# Initial variables
+os ?= $(shell uname -s)
+
+ifeq ($(os), Darwin)
+open = open
+else ifeq ($(shell uname), Linux)
+open = xdg-open
+else ifeq ($(shell uname), Windows_NT)
+open =  explorer
+endif
+
 build: recreate ?= 
 build:
 	docker-compose up -d --build --remove-orphans $(recreate) $(container)
@@ -49,7 +60,7 @@ copy: ## Copy app files/directories from container to host
 	docker cp $(shell docker-compose ps -q $(container)):$(path) .
 
 open: ## Open app in the browser
-	open $(subst 0.0.0.0,localhost,http://$(shell docker-compose port app 8080))/greeting
+	$(open) $(subst 0.0.0.0,localhost,http://$(shell docker-compose port app 8080))/greeting
 
 expose: ## Expose your local environment to the internet, thanks to Serveo (https://serveo.net)
 	ssh -R 80:localhost:$(subst 0.0.0.0:,,$(shell docker-compose port app 8080)) serveo.net
