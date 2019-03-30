@@ -2,7 +2,7 @@
 
 Start working:
 ```bash
-make build
+make
 ```
 
 Refresh changes
