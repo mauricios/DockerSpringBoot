@@ -1,0 +1,12 @@
+# Ignore everything
+**
+
+# Allow app files
+!/src/*
+!/pom.xml
+
+# Ignore unnecessary files
+**/*~
+**/*.log
+**/.DS_Store
+**/Thumbs.db
