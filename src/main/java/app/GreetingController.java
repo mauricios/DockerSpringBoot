@@ -20,7 +20,7 @@ public class GreetingController {
     private static final String templateBye = "Bye, %s!";    
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
+    @RequestMapping(value = {"", "/", "/greeting"})
     public Greeting greeting(@RequestParam(value="name", defaultValue="Mauricio") String name) {
         HashMap<String, String> datasource = myAppProperties.getDatasource();
         String dBUrl = datasource.get("url");

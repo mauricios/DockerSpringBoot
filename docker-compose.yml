@@ -20,5 +20,3 @@ services:
 networks:
     app:
         name: Demo-SpringBoot-app
-
-version: "3.7"
