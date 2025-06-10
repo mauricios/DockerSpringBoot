@@ -35,4 +35,9 @@ public class GreetingController {
                             String.format(templateBye, name),
                             "This is just a Description");
     }    
+
+    @GetMapping("/greeting_with_param")
+    public Greeting greetingWithParam(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name), "Parameter-based greeting");
+    }
 }
